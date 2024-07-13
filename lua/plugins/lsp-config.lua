@@ -52,6 +52,11 @@ return { -- LSP Configuration & Plugins
 
     -- Add other tools to be installed by Mason
     local ensure_installed = vim.tbl_keys(servers or {})
+    vim.list_extend(ensure_installed, {
+      'eslint_d', -- Used to lint javascript code
+      'luacheck', -- Used to lint lua code
+      'stylua', -- Used to format Lua code
+    })
 
     -- Handle install and upgrade of third-party lsp tools
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
